@@ -1,4 +1,4 @@
-chat.domain.org {
+localhost {
 	encode zstd gzip
 
 	header {
@@ -6,12 +6,12 @@ chat.domain.org {
 	}
 
 	handle_path /static/* {
-		root * /path/to/public
+		root * /code/chat-mit/public
 		file_server
 	}
 
 	handle_path /storage/* {
-		root * /path/to/uploads
+		root * /code/chat-mit/uploads
         file_server
 	}
 
@@ -31,7 +31,7 @@ chat.domain.org {
 	}
 
     handle {
-		root * /path/to/public/html
+		root * /code/chat-mit/public/html
 		file_server
 	}
 }
