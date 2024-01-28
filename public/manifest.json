@@ -1,0 +1,31 @@
+{
+  "name": "Bullet.Chat PWA",
+  "short_name": "Bullet.Chat",
+  "description": "Fast and competent internal chat",
+  "id": "bullet-chat.mobile.pwa",
+  "icons": [
+    {
+      "src": "icons/perfect-bullet.svg",
+      "type": "image/svg+xml",
+      "purpose": "any",
+      "sizes": "any"
+    },
+    {
+      "src": "icons/maskable_icon_x512.png",
+      "type": "image/png",
+      "purpose": "maskable",
+      "sizes": "512x512"
+    },
+    {
+      "src": "icons/maskable_icon_x192.png",
+      "type": "image/png",
+      "purpose": "maskable",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "https://chat.mossaic.systems/",
+  "display": "fullscreen",
+  "theme_color": "#2f343d",
+  "background_color": "#2f343d",
+  "orientation": "portrait-primary"
+}

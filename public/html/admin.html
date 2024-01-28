@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bullet.Chat | ADMIN</title>
+    <script type="text/javascript" src="static/scripts/config.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/utils.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/websocket.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/admin.js?v={{version}}"></script>
+</head>
+<body>
+    <div id="ws-toast" style="display: none"><span id="ws-toast-text"></span></div>
+
+    <h1>Bullet.Chat admin panel</h1>
+    <!-- <em>If you are not me (A.Olokhtonov) - leave this page now or you WILL break things!</em> -->
+
+    <div style="display: flex; flex-direction: column; gap: 20px; width: 400px; margin-top: 20px;">
+<!--
+        <span id="login-status" style="color: red;">LOGGED OUT</span>
+
+        <div>
+            <input type="text" id="tmp-login-login" placeholder="login">
+            <input type="password" id="tmp-login-password" placeholder="password">
+            <button id="tmp-login">login</button>
+        </div>
+-->
+        <div>
+            <input type="text" id="tmp-add-user-login" placeholder="login">
+            <input type="text" id="tmp-add-user-password" placeholder="password">
+            <input type="text" id="tmp-add-user-display" placeholder="Mr. Pretty">
+            <button id="tmp-add-user-button">add user</button>
+        </div>
+
+<!--         <div>
+            <input type="number" id="tmp-add-user-channel-user" placeholder="user id">
+            <input type="number" id="tmp-add-user-channel-channel" placeholder="channel id">
+            <button id="tmp-add-channel-user-button">add user to channel</button>
+        </div>   -->
+    </div>
+
+    <!-- <input type="number" id="tmp-send-message-channel">
+    <input type="text" id="tmp-send-message-text">
+    <button id="tmp-send-message-button">add user to channel</button>
+    <br><br> -->
+
+<span id="text"></span>
+
+<a href="/">Login page</a>
+</body>
+</html>

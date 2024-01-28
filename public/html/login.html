@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2f343d" />
+
+    <link rel="stylesheet" href="static/styles/shared.css?v={{version}}2">
+    <link rel="stylesheet" href="static/styles/login.css?v={{version}}5">
+    <link rel="stylesheet" href="static/styles/vertical.css?v={{version}}2">
+
+    <link rel="shortcut icon" href="static/icons/bullet.svg">
+
+    <script type="text/javascript" src="static/scripts/config.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/utils.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/websocket.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/login.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/storage.js?v={{version}}"></script>
+    <script type="text/javascript" src="static/scripts/mobile.js?v={{version}}"></script>
+
+    <title>Bullet.Chat | Login</title>
+</head>
+<body>
+    <div class="websocket-toast hidden" id="ws-toast">
+        <span id="ws-toast-text"></span>
+    </div>
+
+    <div id="login-page" class="page login">
+        <div></div>
+        <div class="login-center">
+            <div class="tagline">
+                <span>Bullet.Chat</span>
+                <img draggable="false" src="static/icons/perfect-bullet.svg">
+            </div>
+            <div id="login-form" class="login-card">
+                <input id="login-form-login" class="text-input" type="text" placeholder="login" autocomplete="username">
+                <input id="login-form-password" class="text-input" type="password" placeholder="password" autocomplete="current-password">
+                <button tabindex=-1 id="login-form-submit" class="primary-button tdisabled">Log in</button>
+                <span id="login-form-fail" class="login-fail-text dhide">Wrong login and/or password</span>
+                <!-- <a class="deemph-link" href="forgor.html">Forgor passwor?</a> -->
+            </div>
+        </div>
+        <div class="misc-info">
+            bullet.chat ver {{version}}<br>
+            powered by programming a computer
+        </div>
+    </div>
+</body>
+</html>

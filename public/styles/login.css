@@ -1,0 +1,82 @@
+.page.login {
+    height: 100%;
+    background: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: var(--gap);
+    box-sizing: border-box;
+}
+
+.login-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+    width: 100%;
+}
+
+.tagline {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+    color: var(--ascent-blue);
+    font-family: 'Inter Semibold';
+    font-size: 32px;
+}
+
+.tagline img {
+    height: 20px;
+    position: relative;
+    top: 1px;
+}
+
+.login-card {
+    padding: 20px;
+    border-radius: var(--radius);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--gap);
+    min-width: 400px;
+    text-align: center;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.login-card .primary-button {
+    border: none;
+    background: var(--ascent-blue);
+    color: white;
+    font-size: 14px;
+    font-family: 'Inter Semibold';
+    height: 32px;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px 0px var(--ascent-blue);
+    border-radius: var(--radius);
+}
+
+.login-card .primary-button:active {
+    filter: brightness(0.7);
+}
+
+.login-card .deemph-link {
+    color: black;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.page.login .misc-info {
+    color: var(--de-emph);
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-fail-text {
+    font-size: 14px;
+    color: red;
+}

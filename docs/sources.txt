@@ -1,0 +1,16 @@
+io_uring:       https://manpages.debian.org/unstable/liburing-dev/io_uring_enter.2.en.html
+Websocket RFC:  https://datatracker.ietf.org/doc/html/rfc6455
+Bytes -> UTF8:  https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder
+UTF8 -> Bytes:  https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder
+IndexedDB:      https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
+HTTP 1.1 RFC:   https://datatracker.ietf.org/doc/html/rfc2616
+Offline/Online: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine
+SYN/ACK:        https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure
+
+Separate mmap reserve and commit: https://stackoverflow.com/questions/2782628/any-way-to-reserve-but-not-commit-memory-in-linux
+
+mmap challenges (Sublime):
+https://www.sublimetext.com/blog/articles/use-mmap-with-care
+
+Resumable file upload: https://javascript.info/resume-upload
+CTRL+V pictures: https://stackoverflow.com/a/6338207/11420590

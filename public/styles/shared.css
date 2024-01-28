@@ -1,0 +1,205 @@
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 500;
+    src: url('fonts/Inter-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Inter Semibold';
+    font-style:  normal;
+    font-weight: 600;
+    src: url('fonts/Inter-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style:  normal;
+    font-weight: 500;
+    src: url('fonts/RobotoMono-Regular.ttf') format('truetype');
+}
+
+:root {
+    --background-main: #ffffff;
+    --ascent-blue: #5286ff;
+    --dark-ascent-blue: #475f97;
+    --lighter-blue: #95b5fe;
+    --blue-gray: #e5e7eb;
+    --dark-blue: #2f343d;
+    --de-dark-blue: #3d434f;
+    --de-dark: #333;
+    --de-emph: #aaa;
+    --de-emph2: #888;
+    --de-de-emph: #ddd;
+    --dark-border: #282c32;
+    --dark-de-emph: #93989f;
+    --dark-de-de-emph: #d1d4d9;
+    --gap2: 20px;
+    --gap15: 15px;
+    --gap: 10px;
+    --halfgap: 5px;
+    --hhgap: 3px;
+    --radius: 4px;
+    --bigradius: 8px;
+    --avatar-width: 26px;
+    --scrollbar-width: 10px;
+    --emoji-picker-width: 28px;
+    --emoji-picker-cols: 8;
+    --emoji-picker-rows: 4;
+
+    --subtle-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+    --floating-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+
+    --scrollbar-bg: #dddddd;
+    --scrollbar-fg: #aaaaaa;
+    --dark-hover: #16191d;
+    --dark-selected: hsl(214deg 8% 43% / 50%);
+    --status-online: #9ce39c;
+    --status-away: #ffda4f;
+    --status-busy: #ff4949;
+    --status-offline: #aaa;
+    --negative-red: #ff5257;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    height: 100%;
+}
+
+input::placeholder {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.dhide {
+    display: none !important;
+}
+
+/*.ohide {
+    opacity: 0 !important;
+    transform: translateY(-10px);
+}
+
+.ohide-t {
+    transition: transform .1s, opacity .1s;
+}*/
+
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.action {
+    user-select: none;
+    -webkit-user-select: none;
+    border-radius: var(--radius);
+    padding: var(--radius);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tdisabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+    user-select: none;
+    -webkit-user-select: none;
+    box-shadow: none !important;
+}
+
+*.tdisabled .tdisabled {
+    opacity: 1.0;
+}
+
+.websocket-toast {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    /*border: 1px solid #ece699;*/
+    transition: transform .1s cubic-bezier(.17,.84,.44,1), opacity .1s;
+    font-size: 14px;
+    color: white;
+    font-family: 'Inter Semibold';
+    border-radius: var(--radius);
+    pointer-events: none;
+}
+
+.websocket-toast.hidden {
+    transform: translate(-50%, -5px);
+    opacity: 0;
+}
+
+.noevents {
+    pointer-events: none !important;
+}
+
+.vhide {
+    visibility: hidden !important;
+}
+
+.gray-subtext {
+    color: var(--de-emph);
+    font-family: 'Inter';
+}
+
+.flex-center-gap {
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+}
+
+.text-input {
+    font-family: sans-serif;
+    border: none;
+    background: var(--de-de-emph);
+    border-radius: var(--radius);
+    font-size: 14px;
+    height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.text-input::placeholder {
+    color: var(--de-dark);
+}
+
+.text-input:focus {
+    outline: 1px solid var(--ascent-blue);
+}
+
+.row {
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+}
+
+@media (pointer:fine) {
+    .action.light:hover img {
+        filter: brightness(0.7);
+    }
+
+    .action.light:active img {
+        filter: brightness(0.4);
+    }
+}
+
+.noselect {
+    user-select: none;
+    -webkit-user-select: none;
+}

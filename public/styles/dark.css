@@ -1,0 +1,156 @@
+.dark .content-block {
+    background: var(--dark-blue);
+}
+
+.dark .channel-header {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .channel-header .action img {
+    filter: invert(100%);
+}
+
+.dark .channel-header .action:hover {
+    background: var(--dark-hover);
+}
+
+.dark .message .indicator {
+    background: var(--dark-blue);
+}
+
+.dark .message .content {
+    background: var(--de-dark-blue);
+    border-color: var(--dark-blue);
+}
+
+.dark .message .message-header {
+    background: var(--dark-blue);
+    border-color: var(--dark-blue);
+}
+
+.dark #search-input,
+.dark .message-input-textarea {
+    background: var(--de-dark-blue);
+    color: white;
+}
+
+.dark .channel-header .row1 {
+    border-color: var(--dark-border);
+}
+
+.dark .date-separator-hr {
+    border-color: #3c434f;
+}
+
+.dark .date-separator-date {
+    background: var(--dark-blue);
+    color: var(--dark-de-emph);
+}
+
+.dark .message .message-header .author {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .message .content .text {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .message.mine .content {
+    background: var(--dark-ascent-blue);
+}
+
+.dark .message .overtop-row .reply-author {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .message .overtop-row .reply-preview {
+    color: var(--dark-de-emph);
+}
+
+.dark .message .overtop-row .reply-angle {
+    border-color: var(--dark-de-emph);
+}
+
+.dark .message .reactions .reaction {
+    background: var(--de-dark-blue);
+}
+
+.dark .message .text a,
+.dark .message .overtop-row .reply-preview a,
+.dark .message-input .reply-preview-text a {
+    color: var(--de-de-emph);
+}
+
+.dark .reactions .reaction-count {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .channel-header .row2 {
+    background: var(--dark-blue);
+    border-bottom-color: var(--dark-border);
+    border-left-color: var(--dark-de-emph);
+}
+
+.dark .message-input .row1 {
+    background: var(--dark-blue);
+    border-color: var(--dark-de-emph);
+    color: var(--dark-de-de-emph);
+}
+
+.dark .file-attachment-info {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .message .attachments .item .icon {
+    border-color: var(--dark-de-de-emph);
+}
+
+.dark .message .attachments .item img {
+    filter: invert(15%);
+}
+
+.dark .message.mine .attachments {
+    border-color: var(--dark-de-de-emph);
+}
+
+.dark .message.mine .attachments .item .text {
+    color: var(--dark-de-de-emph);
+}
+
+.dark .message .content .mention {
+    background: var(--dark-ascent-blue);
+}
+
+.dark .message.mine .content .mention {
+    background: #7288bb;
+}
+
+.dark .message.mine .content .mention.me {
+    color: white;
+}
+
+.dark .message-input {
+    background: var(--dark-blue);
+}
+
+.dark .content-block .godown {
+    background: var(--de-dark-blue);
+}
+
+.dark .message-input .row2 {
+    background: var(--dark-blue);
+}
+
+.dark .spinner-container {
+    background: var(--dark-blue);
+}
+
+.dark .hovering-date-indicator-wrapper .value {
+    background: var(--de-dark-blue);
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+
+.dark .hovering-date-indicator-wrapper {
+    color: var(--dark-de-de-emph);
+}

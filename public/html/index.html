@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#2f343d" />
+
+		<link rel="manifest" href="static/manifest.json"/>
+
+		<link rel="stylesheet" href="static/styles/shared.css?v={{version}}">
+		<link rel="stylesheet" href="static/styles/index.css?v={{version}}">
+		<link rel="stylesheet" href="static/styles/dark.css?v={{version}}">
+		<link rel="stylesheet" href="static/styles/popup.css?v={{version}}">
+		<link rel="stylesheet" href="static/styles/settings.css?v={{version}}">
+		<link rel="stylesheet" href="static/styles/vertical.css?v={{version}}">
+
+		<link rel="shortcut icon" href="static/icons/bullet.svg" id="favicon">
+
+		<script type="text/javascript" src="static/scripts/config.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/utils.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/storage.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/twitter_compact.js?v={{ersion}}"></script>
+		<script type="text/javascript" src="static/scripts/threads.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/emoji.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/spinner.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/widgets/scroller.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/widgets/message_input.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/widgets/content_block.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/websocket.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/messages_recv.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/messages_send.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/constructor.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/search.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/popup.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/autocomplete.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/html.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/upload.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/settings.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/notifications.js?v={{version}}"></script>
+		
+		<script type="text/javascript" src="static/scripts/mobile.js?v={{version}}"></script>
+		<script type="text/javascript" src="static/scripts/index.js?v={{version}}"></script>
+
+		<title>Bullet.Chat</title>
+	</head>
+	<body>
+		<div id="main-page" class="page main" onclick="void(0);">
+			<div class="channels shown" id="sidebar">
+				<div class="management-area">
+					<div id="my-username-topleft" class="management-me">
+						<span id="my-username-topleft-text"></span>
+					</div>
+					<div class="management-area-actions">
+						<!-- <div class="action" id="toggle-global-search">
+							<img draggable="false" src="static/icons/search_ccc.svg">
+						</div> -->
+						<div class="action" id="toggle-settings">
+							<img draggable="false" src="static/icons/settings.svg">
+						</div>
+						<div class="action" id="toggle-create-channel">
+							<img draggable="false" src="static/icons/plus.svg">
+						</div>
+					</div>
+				</div>
+				<div class="channel-list-spinner" id="channels-spinner">
+					<div class="loader">
+						<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+				            <path id="channel-list-spinner" fill="none" stroke="#ddd" stroke-width="3" stroke-linecap="round"/>
+				        </svg>
+				     </div>
+				</div>
+				<div class="channel-list tdisabled" id="channel-list">
+				</div>
+			</div>
+
+			<div class="content-block channel-content" id="channel-content">
+				<div class="content-block-header channel-header">
+					<div class="row1">
+						<div class="left">
+							<div class="action big mobile-only toggle-sidebar" id="toggle-sidebar">
+								<img draggable="false" src="static/icons/perfect-burger.svg">
+								<div class="unread-circle"></div>
+							</div>
+							
+							<div class="avatar" id="selected-channel-avatar">
+								<img draggable="false" alt="" src="static/images/ph.svg">
+							</div>
+
+							<div class="title" id="selected-channel-title">
+								
+							</div>
+
+							<input type="file" name="f3" class="dhide" id="channel-avatar-upload-hidden-button">
+						</div>
+						<div class="right">
+							<input type="text" id="search-input" class="hidden" placeholder="Search">
+							<div class="actions">
+								<!-- <button id="button-ohno">HELP</button> -->
+								<div class="action" id="toggle-search">
+									<img draggable="false" src="static/icons/perfect-search.svg">
+								</div>
+								<div class="action" id="toggle-people">
+									<img draggable="false" src="static/icons/perfect-people.svg">
+								</div>
+								<div class="action" id="toggle-attachments">
+									<img draggable="false" src="static/icons/perfect-attach.svg">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row2 dhide" id="pin-preview-container">
+						<div class="pin-preview">
+							<img draggable="false" class="pin-icon" src="static/icons/pin.svg">
+							<div id="pin-preview">
+								<div class="author" id="pin-preview-author">
+								</div>
+								<div class="text" id="pin-preview-text">
+								</div>
+							</div>
+						</div>
+						<div class="action light" id="pin-unpin">
+							<img draggable="false" src="static/icons/cross.svg">
+						</div>
+					</div>
+				</div>
+
+				<div id="container" class="scroller-container" tabindex="1">
+                </div>
+
+				<div class="message-input" id="message-input-full">
+					<div class="godown hidden" id="godown">
+						<img draggable="false" src="static/icons/down-arrow.svg">
+					</div>
+					<div class="row3 dhide" id="msg-attachments-row">
+					</div>
+					<div class="row4 dhide" id="msg-attachments-files-row">
+					</div>
+					<div class="row1 dhide" id="message-input-additions">
+						<div class="reply-preview" id="reply-preview">
+							<div class="reply-preview-author" id="reply-preview-author">
+							</div>
+							<div class="reply-preview-text" id="reply-preview-text">
+							</div>
+						</div>
+						<div class="action light cancel-decoration" id="cancel-decoration">
+							<img draggable="false" src="static/icons/cross.svg">
+						</div>
+					</div>
+					<div class="row2">
+						<div class="action upload-file-button" id="upload-file-button">
+							<img draggable="false" src="static/icons/perfect_attach.svg">
+						</div>	
+						<textarea class="message-input-textarea" id="message-input"></textarea>
+						<div class="light action input-embed" id="toggle-emoji-input">
+							<img draggable="false" src="static/icons/react2.svg">
+						</div>
+						<div class="action light message-send-button" id="message-send-button">
+							<img draggable="false" src="static/icons/send.svg">
+						</div>
+						<div class="typing-indicator" id="typing-indicator">
+							<!-- a.olokhtonov is typing... -->
+						</div>
+					</div>
+				</div>
+
+				<div class="message-input-drag-indicator dhide" id="message-input-drag-indicator">
+					<div class="filedrop-border">
+						<span class="filedrop-text">Drop files here to attach them to the message</span>
+					</div>
+				</div>
+
+
+				<input type="file" name="f" class="upload-hidden-button" id="file-upload-hidden-button" multiple="multiple">
+			</div>
+
+			<div class="content-block  thread-content dhide" id="thread-content">
+				<div class="content-block-header channel-header">
+					<div class="row1">
+						<div class="left">
+							<div class="action toggle-sidebar header-back-btn">
+								<!-- back arrow for everyone? -->
+								<img draggable="false" src="static/icons/leftarrow.svg">
+							</div>
+
+							<div class="title">
+								Thread
+							</div>
+						</div>
+						<div class="right">
+						</div>
+					</div>
+				</div>
+				<div class="scroller-container" tabindex="1"></div>
+				<div class="message-input"></div>
+				<div class="message-input-drag-indicator dhide">
+					<div class="filedrop-border">
+						<span class="filedrop-text">Drop files here to attach them to the message</span>
+					</div>
+				</div>
+				<input type="file" name="thread-uploader" class="upload-hidden-button" multiple="multiple">
+			</div>
+
+			<div id="popup-container" class="noevents">
+				<div class="popup hidden" id="popup">
+					<div class="title"></div>
+					<div class="body"></div>
+					<div class="buttons"></div>
+				</div>
+				<div class="popup-dimmer hidden" id="popup-dimmer"></div>
+			</div>
+
+			<div class="channel-creation dhide">
+				<div class="channel-creation-header">
+					<div class="action big mobile-only toggle-sidebar" id="toggle-sidebar3">
+						<img draggable="false" src="static/icons/perfect-burger.svg">
+						<div class="unread-circle"></div>
+					</div>
+				</div>
+
+				<div class="tagline">
+					Create a new <img draggable="false" src="static/icons/perfect-bullet.svg"> chat
+				</div>
+				<div class="choose-one">
+					<div class="superpadded-variant" id="chat-ui">
+						<div class="title" id="b-chat">Direct</div>
+
+						<div class="body">	
+							<div class="step1" id="chat-step1">
+								<div class="description">Chat with a single person</div>
+							</div>
+
+							<div class="step2 dhide" id="chat-step2">
+								<input type="text" class="search" id="find-chatter" placeholder="user">
+								<button class="primary tdisabled" id="chat-create-confirm">
+									Create
+								</button>
+
+								<div class="autocomplete-variants" id="user-autocomplete-variants"></div>
+							</div>
+						</div>
+					</div>
+					<div class="superpadded-variant" id="channel-ui">
+						<div class="title" id="b-channel">Channel</div>
+
+						<div class="body">						
+							<div class="step1" id="channel-step1">
+								<div class="description">Chat with multiple people</div>
+							</div>
+
+							<div class="step2 dhide" id="channel-step2">
+								<input type="text" class="search" id="name-channel" placeholder="channel">
+								<button class="primary" id="channel-create-confirm">
+									Create
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="settings dhide">
+				<div class="row">
+					<div class="action big mobile-only toggle-sidebar" id="toggle-sidebar2">
+						<img draggable="false" src="static/icons/perfect-burger.svg">
+						<div class="unread-circle"></div>
+					</div>
+					<h1><img draggable="false" src="static/icons/bullet_ccc_straight.svg">SETTINGS</h1>
+				</div>
+
+				<input type="file" name="f2" class="upload-hidden-button" id="avatar-upload-hidden-button">
+				<div class="settings-sections">
+					<details class="settings-section">
+						<summary>Profile</summary>
+						<div class="settings-section-details">							
+							<h3>Change avatar</h3>
+							<div class="settings-avatar-wrapper">
+								<div class="avatar-block">
+									<img draggable="false" src="static/images/avatar_placeholder.svg" id="avatar-big-preview">
+								</div>
+								<div class="input-blocks">
+									<div class="top">
+										<!-- top -->
+										<div class="me-line">
+											<span id="settings-me-displayname">Mr. Pretty</span><span class="login-linkable" id="settings-me-login">@mrpretty1996</span>
+										</div>
+
+										<div class="avatar-line actions">
+											<div class="action" title="Upload image" onclick="settings_open_avatar_selection_dialog()">
+												<img draggable="false" src="static/icons/upload.svg">
+											</div>
+											<div class="action" title="Reset avatar" onclick="settings_reset_avatar()">
+												<img draggable="false" src="static/icons/cancel.svg">
+											</div>
+										</div>
+									</div>	
+									<div class="input-block">
+										<!-- <label class="labeled-input">
+											<span class="label-text">Name</span>
+											<input type="text">
+										</label>
+										<label class="labeled-input">
+											<span class="label-text">Email</span>
+											<input type="text">
+										</label> -->
+									</div>
+								</div>
+							</div>
+                        	<h3>Change password</h3>
+	                        <div class="change-password-wrapper">
+	                        	<div class="change-password-row">
+		                    		<label>New password:</label>
+		                    		<input id="change-password-input" type="text" class="text-input" maxlength="30">
+		                    	</div>
+		                    	<div class="change-password-row">
+		                    		<label>Confirm password:</label>
+		                    		<input id="confirm-password-input" type="text" class="text-input" maxlength="30">
+		                    	</div>
+		                    	<button id="confirm-password-change" class="primary tdisabled">Change</button>
+	                        </div>
+
+	                        <button id="settings-logout" class="negative">Logout</button>
+						</div>
+					</details>
+					<details class="settings-section">
+						<summary>Appearance</summary>
+						<div class="settings-section-details">
+							<label class="noselect">
+								<input type="checkbox" id="dark-mode-toggle"> Dark mode
+							</label>
+						</div>
+					</details>
+					<details class="settings-section">
+						<summary>Notifications</summary>
+						<div class="settings-section-details">
+							<label>
+								<input type="checkbox" onchange="notification_toggle_sound(this)">
+								Enable sound
+							</label>
+						</div>
+						<button class="primary" onclick="save_settings()">Save</button>
+					</details>
+					<details class="settings-section">
+						<summary>Developer</summary>
+						<div class="settings-section-details">
+							TODO
+						</div>	
+					</details>
+				</div>
+			</div>
+			<div class="context-menu hidden" id="context-menu"></div>
+
+			<div class="emoji-list hidden" id="emoji-list">
+				<div class="emoji-list-body" id="emoji-list-body"></div>
+			</div>
+		</div>
+
+	    <div class="websocket-toast hidden" id="ws-toast">
+			<span id="ws-toast-text">Connecting</span>
+		</div>
+
+		<div id="item-factory"></div>
+	</body>
+</html>

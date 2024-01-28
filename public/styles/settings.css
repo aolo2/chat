@@ -1,0 +1,181 @@
+.settings {
+    padding: var(--gap);
+}
+
+.settings h1 {
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Inter Semibold';
+    display: flex;
+    gap: var(--halfgap);
+    align-items: center;
+}
+
+.settings h1 img {
+    height: 32px;
+}
+
+.settings-sections {
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap);
+    padding-left: 0;
+    gap: var(--gap);
+}
+
+.settings-section summary {
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    box-shadow: var(--subtle-shadow);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    padding: var(--gap);
+    color: var(--de-dark);
+    border-radius: var(--radius);
+    background: #eee;
+}
+
+.settings-section summary:focus {
+    outline: none;
+}
+
+.settings-section-details {
+    padding-top: var(--gap);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    /*margin-top: var(--halfgap);*/
+    /*box-sizing: border-box;*/
+    /*border: 1px solid var(--de-de-emph);*/
+    /*border-radius: var(--radius);*/
+}
+
+.settings-avatar-wrapper {
+    display: flex;
+    gap: var(--gap);
+}
+
+.settings-avatar-wrapper .avatar-block {
+    width: 128px;
+    height: 128px;
+}
+
+.settings-avatar-wrapper .avatar-block img {
+    width: 128px;
+    height: 128px;
+    border-radius: var(--radius);
+    object-fit: cover;
+}
+
+.settings-avatar-wrapper .input-blocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-blocks .top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--halfgap);
+}
+
+.settings .labeled-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--hhgap);
+}
+
+.settings .labeled-input input[type=text] {
+    font-family: sans-serif;
+    border: 1px solid var(--de-de-emph);
+    font-size: 14px;
+    height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 40ch;
+}
+
+.settings .labeled-input input[type=text]:focus {
+    outline: none;
+    border: 1px solid var(--ascent-blue);
+}
+
+.settings .labeled-input .label-text {
+    font-size: 13px;
+}
+
+.settings .me-line {
+    display: flex;
+    gap: var(--halfgap);
+}
+
+.settings .login-linkable {
+    color: var(--de-emph);
+    cursor: pointer;
+}
+
+.settings .actions {
+    display: flex;
+    gap: var(--halfgap);
+    user-select: none;
+    -webkit-user-select: none;
+    align-items: center;
+}
+
+.settings .actions img {
+    height: 14px;
+    width: 14px;
+}
+
+.settings .actions .action {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    padding: var(--radius);
+    border-radius: var(--radius);
+}
+
+.settings h3 {
+    margin: 0;
+}
+
+.settings .change-password-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.settings .change-password-row {
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+}
+
+.settings .change-password-wrapper label {
+    width: 150px;
+}
+
+button#confirm-password-change {
+    width: 100px;
+}
+
+@media (pointer:fine) {
+    .settings .action:hover {
+        background: var(--de-de-emph);
+    }
+
+    .settings .login-linkable:hover {
+        text-decoration: underline;
+    }
+
+    .settings-section summary:hover {
+        border-color: var(--ascent-blue);
+    }
+
+    .settings .action:active {
+        background: #bbb;
+    }
+}

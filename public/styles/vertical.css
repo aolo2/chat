@@ -1,0 +1,310 @@
+@media (pointer:none), (pointer:coarse)  {
+    html {
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .page.main .channels { 
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%); 
+        height: 100%;
+        z-index: 999;
+        width: 100%;
+    }
+
+    .page.main .channels.shown {
+        transform: translateX(0); 
+    }
+
+    .page.main { 
+        grid-template-columns: 1fr; 
+        min-width: 0;
+    }
+
+    .page.login { gap: 20px; }
+    .action.mobile-only {
+        display: flex;
+    }
+
+    .popup {
+        min-width: 100px;
+    }
+
+    .emoji-group .emojis {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .message .content .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .message .mid-row .actions {
+        display: none;
+    }
+
+    .message .content {
+        max-width: calc(100% - var(--avatar-width) - var(--gap)) !important; /* to overwrite max-width set from js */
+    }
+
+    .content-block-header {
+        background: var(--dark-blue);
+    }
+
+    .content-block-header .row1 {
+        border-bottom: none;
+        padding: 0;
+    }
+
+    .content-block-header .left {
+        gap: 0;
+    }
+
+    .content-block-header .title {
+        font-family: 'Inter Semibold';
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: var(--gap);
+    }
+
+    .content-block-header .toggle-sidebar img {
+        filter: invert(100%);
+    }
+
+    .thread-content .content-block-header .row1 {
+        padding: 10px;
+    }
+
+    .text-status-indicator {
+        margin-left: 0;
+        font-size: 12px;
+    }
+
+    .emoji32 {
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    .emoji64 {
+        width: 33px !important;
+        height: 33px !important;
+    }
+
+    .channels .channel {
+        padding-top: var(--gap);
+        padding-bottom: var(--gap);
+        position: relative;
+        transform: background .1s;
+    }
+
+    .channels .channel:active {
+        background: var(--de-dark-blue);
+    }
+
+    .channel .avatar img {
+        height: 32px;
+        width: 32px;
+    }
+
+    .channel .indicator {
+        position: absolute;
+        left: 37px;
+        bottom: 7px;
+    }
+
+    .channel .indicator.offline {
+        display: none;
+    }
+
+    .channel .title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: var(--hgap);
+    }
+
+    .channel .channel-title {
+        color: var(--de-de-emph);
+    }
+
+    .channel .message-preview {
+        font-size: 13px;
+    }
+
+    .channel .message-preview a {
+        text-decoration: none;
+        color: inherit;
+        pointer-events: none;
+    }
+
+    .channel .message-timestamp {
+        position: absolute;
+        top: var(--gap);
+        right: var(--gap);
+        font-size: 12px;
+    }
+
+    .channel .right {
+        align-self: flex-end;
+    }
+
+    .channels.animation-ready { 
+        transition: transform .15s cubic-bezier(.17,.84,.44,1); 
+    }
+
+    .message-input-textarea:focus {
+/*        outline: none;*/
+    }
+
+    .channels .channel.selected {
+        background: inherit;
+        font-family: inherit;
+        color: inherit;
+    }
+
+    .message .overtop-row .reply-content {
+        max-width: 100%;
+    }
+
+    .channels .management-area {
+        padding: 0;
+    }
+
+    .management-area-actions {
+        gap: 0;
+    }
+
+    .management-area-actions img {
+        height: 18px;
+        width: 18px;
+    } 
+
+    .management-area-actions .action {
+        padding: calc(var(--gap) + var(--halfgap));
+        box-sizing: content-box;
+        border-radius: 0;
+    }
+
+    .management-area-actions .action:active {
+        background: var(--de-dark-blue);
+    }
+
+    .management-me {
+        padding-left: var(--gap);
+    }
+
+    .channel-creation-header {
+        top: 0;
+        left: 0;
+    }
+    
+    .settings {
+        padding: 0;
+    }
+
+    .settings-sections {
+        padding: var(--gap);
+    }
+
+    .action.toggle-sidebar:active {
+        background: var(--de-dark-blue);
+    }
+
+    .action.toggle-sidebar#toggle-sidebar3:active {
+        background: var(--de-de-emph);
+    }
+
+    .action.mobile-only {
+        display: flex;
+        padding: var(--gap);
+        padding-bottom: calc(var(--gap) + var(--halfgap));
+        padding-top: calc(var(--gap) + var(--halfgap));
+        box-sizing: content-box;
+        border-radius: 0;
+    }
+
+    .toggle-sidebar .unread-circle {
+        top: 15px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 1000px) { 
+    .message .content .image-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 800px) { 
+    .page.main .channels { 
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%); 
+        height: 100%;
+        z-index: 999;
+        width: 100%;
+    }
+
+    .action.mobile-only {
+        display: flex;
+    }
+
+    .page.main .channels.shown {
+        transform: translateX(0); 
+    }
+
+    .page.main { 
+        grid-template-columns: 1fr; 
+        min-width: 0;
+    }
+
+    .page.main.thread-opened {
+        grid-template-columns: 1fr;
+    }
+
+    .page.main.thread-opened #channel-content {
+        display: none;
+    }
+
+    .login-card {
+        width: 80%;
+        min-width: 0;
+    }
+
+    .popup {
+        min-width: 100px;
+    }
+
+    .emoji-group .emojis {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .message .content .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .channel-creation .choose-one {
+        flex-direction: column;
+        gap: var(--gap);
+    }
+
+    .content-block-header .right {
+        position: absolute;
+        right: 0;
+        visibility: hidden;
+    }
+
+    .message .overtop-row .reply-content {
+        max-width: 100%;
+    }
+}

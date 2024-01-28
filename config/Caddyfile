@@ -1,0 +1,37 @@
+chat.domain.org {
+	encode zstd gzip
+
+	header {
+		Service-Worker-Allowed /
+	}
+
+	handle_path /static/* {
+		root * /path/to/public
+		file_server
+	}
+
+	handle_path /storage/* {
+		root * /path/to/uploads
+        file_server
+	}
+
+	handle_path /notifications/* {
+		reverse_proxy 127.0.0.1:7222
+	}
+
+	handle_path /upload/* {
+		reverse_proxy 127.0.0.1:7000
+		request_body {
+			max_size 500MB
+		}
+	}
+
+    handle_path /ws/* {
+        reverse_proxy 127.0.0.1:7271
+	}
+
+    handle {
+		root * /path/to/public/html
+		file_server
+	}
+}
