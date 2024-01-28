@@ -26,7 +26,7 @@ handle_send_simple(struct bc_queue *rqueue, struct bc_connection *connection,
     
     connection->state = CONNECTION_SENDING_SIMPLE;
     
-    queue_send(rqueue, req);
+    queue_send(rqueue, req, 0);
 }
 
 static void

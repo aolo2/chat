@@ -68,7 +68,7 @@ typedef double f64;
 
 #define STATIC_ARRAY_SIZE(a) ((int) (sizeof(a) ? sizeof(a) / sizeof(a[0]) : 0))
 
-static u32 PAGE_SIZE = 4096; // updated later by code with sysconf()
+u32 PAGE_SIZE = 4096; // updated later by code with sysconf()
 
 enum bc_io_type {
     IOU_UNDEFINED = 0,

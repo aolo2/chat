@@ -177,3 +177,14 @@ fd_valid(int fd)
 {
     return fcntl(fd, F_GETFD) != -1 || errno != EBADF;
 }
+
+static struct bc_str
+str_from_literal(char *literal)
+{
+    struct bc_str result = { 0 };
+
+    result.data = literal;
+    result.length = strlen(literal);
+
+    return(result);
+}

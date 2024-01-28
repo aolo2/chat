@@ -26,7 +26,7 @@ LDFLAGS+=" -luring -lcurl -lssl -lcrypto -lece -lpthread "
 
 pushd $SRC_DIR
 
-# cppcheck main.c
+#cppcheck main.c
 $CC main.c $CFLAGS -o $BUILD_DIR/$EXECUTABLE_NAME $LDFLAGS
 
 echo "Built executable $(realpath $BUILD_DIR/$EXECUTABLE_NAME)"

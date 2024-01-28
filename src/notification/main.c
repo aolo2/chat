@@ -155,7 +155,7 @@ io_completion_send(struct bc_notifier *server, struct bc_io *req, int res)
         /* Partial send */
         struct bc_io *next_req = queue_pushr(&server->queue, req);
         next_req->send.start += nsent;
-        queue_send(&server->queue, next_req);
+        queue_send(&server->queue, next_req, 0);
     } else {
         /* Send completed */
         struct bc_connection *connection = connection_get(server, req->send.socket);
@@ -183,7 +183,7 @@ io_completion_writev(struct bc_queue *queue, struct bc_io *req, int res)
         /* Partial writev */
         struct bc_io *next_req = queue_pushr(queue, req);
         next_req->writev.start += nwritten;
-        queue_writev(queue, next_req, nwritten, 0);
+        queue_writev(queue, next_req, nwritten);
     } else {
         /* writev completed */
         log_debug("WRITEV totally completed\n");
@@ -329,7 +329,7 @@ ensure_environment(int argc, char **argv, char *real_path)
         return(false);
     }
     
-    // PAGE_SIZE = sysconf(_SC_PAGESIZE);
+    //PAGE_SIZE = sysconf(_SC_PAGESIZE);
     
     return(true);
 }
