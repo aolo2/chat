@@ -23,7 +23,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "https://chat.mossaic.systems/",
+  "start_url": "https://localhost/",
   "display": "fullscreen",
   "theme_color": "#2f343d",
   "background_color": "#2f343d",
