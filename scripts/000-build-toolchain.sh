@@ -19,6 +19,7 @@ MUSL_LIBS_DIR=musl
 
 DONE_MARKER=.done
 
+mkdir -p $TOOLCHAIN_DIR
 pushd $TOOLCHAIN_DIR
 
 if [ -f $DONE_MARKER ]; then

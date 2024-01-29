@@ -20,6 +20,7 @@ CFLAGS+=" -I$LIBURING_DIR/src/include "
 LDFLAGS=" -L$LIBURING_DIR/src "
 LDFLAGS+=" -luring -lm "
 
+mkdir -p $BUILD_DIR
 pushd $SRC_DIR
 
 # cppcheck main.c

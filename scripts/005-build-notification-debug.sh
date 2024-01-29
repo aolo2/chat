@@ -23,6 +23,7 @@ CFLAGS+=" -I$ECEC_DIR/include -I$OPENSSL_DIR/include -I$CURL_DIR/include -I$LIBU
 LDFLAGS=" -L$LIBRARIES "
 LDFLAGS+=" -lcurl -lcrypto -lssl -lecec -luring -lpthread "
 
+mkdir -p $BUILD_DIR
 pushd $SRC_DIR
 
 # cppcheck main.c
