@@ -1,35 +1,17 @@
-#!/bin/bash
+#!/bin/sh
+set -eu
 
-set -e
+PROJECT_DIR=$(readlink -f "$(dirname "$(readlink -f "$0")")"/..)
+TOOLCHAIN_DIR="$PROJECT_DIR"/toolchain
+BUILD_DIR="$PROJECT_DIR"/build
+CODE_DIR=$PROJECT_DIR/src/notification
+Compiler="$TOOLCHAIN_DIR"/x86_64-linux-musl-native/bin/x86_64-linux-musl-gcc
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-TOOLCHAIN_DIR=$SCRIPT_DIR/../toolchain
-SRC_DIR=$SCRIPT_DIR/../src/notification
-BUILD_DIR=$SCRIPT_DIR/../build
-OPENSSL_DIR=$(realpath $TOOLCHAIN_DIR/openssl-1.1.1v)
-CURL_DIR=$(realpath $TOOLCHAIN_DIR/curl-8.2.1)
-ECEC_DIR=$(realpath $TOOLCHAIN_DIR/ecec-master)
-LIBURING_DIR=$(realpath $TOOLCHAIN_DIR/liburing-liburing-2.4)
-LIBRARIES=$(realpath $TOOLCHAIN_DIR/musl)
-CC=$TOOLCHAIN_DIR/x86_64-linux-musl-native/bin/x86_64-linux-musl-gcc
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-CFLAGS=" -std=gnu11 -Wall -Wextra -Werror "
-EXECUTABLE_NAME=notification-server-release
+WarningFlags="-Wall -Wextra -Werror -Wno-unused-function"
+CompilerFlags="-g -static -pthread -std=gnu11 -I$BUILD_DIR/liburing/src/include -I$BUILD_DIR/openssl/include -I$BUILD_DIR/curl/include -I$BUILD_DIR/ecec/include $WarningFlags"
+LinkerFlags="-L$TOOLCHAIN_DIR/musl-libs -luring -lcurl -lssl -lcrypto -lece"
 
-CFLAGS+=" -g -static "
-CFLAGS+=" -Wno-unused-function "
-#CFLAGS+=" -fsanitize=address,undefined "
-CFLAGS+=" -I$LIBURING_DIR/src/include -I$ECEC_DIR/include -I$OPENSSL_DIR/include -I$CURL_DIR/include -I$LIBRARIES "
-
-LDFLAGS=" -L$LIBRARIES "
-LDFLAGS+=" -luring -lcurl -lssl -lcrypto -lece -lpthread "
-
-mkdir -p $BUILD_DIR
-pushd $SRC_DIR
-
-#cppcheck main.c
-$CC main.c $CFLAGS -o $BUILD_DIR/$EXECUTABLE_NAME $LDFLAGS
-
-echo "Built executable $(realpath $BUILD_DIR/$EXECUTABLE_NAME)"
-
-popd
+$Compiler $CompilerFlags "$CODE_DIR"/main.c -o notification-server-release $LinkerFlags

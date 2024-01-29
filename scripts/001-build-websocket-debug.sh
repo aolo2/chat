@@ -1,29 +1,16 @@
-#!/bin/bash
+#!/bin/sh
+set -eu
 
-set -e
+PROJECT_DIR=$(readlink -f "$(dirname "$(readlink -f "$0")")"/..)
+TOOLCHAIN_DIR="$PROJECT_DIR"/toolchain
+BUILD_DIR="$PROJECT_DIR"/build
+CODE_DIR=$PROJECT_DIR/src/websocket
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-TOOLCHAIN_DIR=$SCRIPT_DIR/../toolchain
-SRC_DIR=$SCRIPT_DIR/../src/websocket
-BUILD_DIR=$SCRIPT_DIR/../build
-LIBURING_DIR=$(realpath $TOOLCHAIN_DIR/liburing-liburing-2.4)
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-CFLAGS=" -std=gnu11 -Wall -Wextra -Werror "
-EXECUTABLE_NAME=ws-server-debug
+WarningFlags="-Wall -Wextra -Werror -Wno-unused-function"
+CompilerFlags="-O0 -g -std=gnu11 -I$BUILD_DIR/liburing/src/include $WarningFlags"
+LinkerFlags="-L$TOOLCHAIN_DIR/native-libs -luring -lcrypt"
 
-CFLAGS+=" -O0 -g "
-CFLAGS+=" -Wno-unused-function "
-CFLAGS+=" -I$LIBURING_DIR/src/include "
-#CFLAGS+=" -fsanitize=address,undefined "
-
-LDFLAGS=" -L$LIBURING_DIR/src "
-LDFLAGS+=" -luring -lcrypt "
-
-mkdir -p $BUILD_DIR
-pushd $SRC_DIR
-
-# cppcheck main.c
-gcc main.c $CFLAGS -o $BUILD_DIR/$EXECUTABLE_NAME $LDFLAGS
-echo "Built executable $(realpath $BUILD_DIR/$EXECUTABLE_NAME)"
-
-popd
+gcc $CompilerFlags "$CODE_DIR"/main.c -o ws-server-debug $LinkerFlags

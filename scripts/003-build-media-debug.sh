@@ -1,28 +1,16 @@
-#!/bin/bash
+#!/bin/sh
+set -eu
 
-set -e
+PROJECT_DIR=$(readlink -f "$(dirname "$(readlink -f "$0")")"/..)
+TOOLCHAIN_DIR="$PROJECT_DIR"/toolchain
+BUILD_DIR="$PROJECT_DIR"/build
+CODE_DIR=$PROJECT_DIR/src/media
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-TOOLCHAIN_DIR=$SCRIPT_DIR/../toolchain
-SRC_DIR=$SCRIPT_DIR/../src/media
-BUILD_DIR=$SCRIPT_DIR/../build
-LIBURING_DIR=$(realpath $TOOLCHAIN_DIR/liburing-liburing-2.4)
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
 
-CFLAGS=" -std=gnu11 -Wall -Wextra -Werror "
-EXECUTABLE_NAME=media-server-debug
+WarningFlags="-Wall -Wextra -Werror -Wno-unused-function -Wno-discarded-qualifiers -Wno-bad-function-cast -Wno-float-equal"
+CompilerFlags="-O0 -g -std=gnu11 -I$BUILD_DIR/liburing/src/include $WarningFlags"
+LinkerFlags="-L$TOOLCHAIN_DIR/native-libs -luring -lm"
 
-CFLAGS+=" -O0 -g "
-CFLAGS+=" -Wno-unused-function -Wno-discarded-qualifiers -Wno-bad-function-cast -Wno-float-equal "
-CFLAGS+=" -I$LIBURING_DIR/src/include "
-#CFLAGS+=" -fsanitize=address,undefined "
-
-LDFLAGS=" -L$LIBURING_DIR/src "
-LDFLAGS+=" -luring -lm "
-
-mkdir -p $BUILD_DIR
-pushd $SRC_DIR
-
-# cppcheck main.c
-gcc main.c $CFLAGS -o $BUILD_DIR/$EXECUTABLE_NAME $LDFLAGS
-echo "Built executable $(realpath $BUILD_DIR/$EXECUTABLE_NAME)"
-popd
+gcc $CompilerFlags "$CODE_DIR"/main.c -o media-server-debug $LinkerFlags
