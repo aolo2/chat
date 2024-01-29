@@ -1,4 +1,4 @@
-build
-data
-uploads
-toolchain
+/build
+/data
+/uploads
+/toolchain
