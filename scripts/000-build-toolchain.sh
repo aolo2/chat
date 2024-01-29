@@ -17,7 +17,8 @@ LIBURING_DIR=liburing-2.4
 GCC_LIBS_DIR=gcc
 MUSL_LIBS_DIR=musl
 
-export MAKEFLAGS="-j$(nproc) -l$(nproc)"
+MAKEFLAGS="-j$(nproc) -l$(nproc)"
+export MAKEFLAGS
 
 DONE_MARKER=.done
 
