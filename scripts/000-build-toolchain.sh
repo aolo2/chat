@@ -17,6 +17,8 @@ LIBURING_DIR=liburing-2.4
 GCC_LIBS_DIR=gcc
 MUSL_LIBS_DIR=musl
 
+export MAKEFLAGS="-j$(nproc) -l$(nproc)"
+
 DONE_MARKER=.done
 
 mkdir -p $TOOLCHAIN_DIR
@@ -54,14 +56,14 @@ MUSL_LIBRARY_PATH=$(realpath $MUSL_LIBS_DIR)
 # Build openssl-1.1.1v with gcc
 pushd $OPENSSL_DIR
 ./config
-make -j
+make
 cp *.so* $GCC_LIBRARY_PATH
 popd
 
 # Build libcurl with gcc (with dynamic openssl compiled by gcc)
 pushd $CURL_DIR
 LD_LIBRARY_PATH=$GCC_LIBRARY_PATH CPPFLAGS="-I$OPENSSL_FULLPATH/include" LDFLAGS="-L$GCC_LIBRARY_PATH" ./configure --with-openssl --disable-ldap
-LD_LIBRARY_PATH=$GCC_LIBRARY_PATH make -j
+LD_LIBRARY_PATH=$GCC_LIBRARY_PATH make
 cp lib/.libs/*.so* $GCC_LIBRARY_PATH
 make clean
 popd
@@ -70,14 +72,14 @@ popd
 pushd $OPENSSL_DIR
 make clean
 CC=$MUSL_FULLPATH/bin/x86_64-linux-musl-gcc ./Configure linux-x86_64
-make -j
+make
 cp *.a $MUSL_LIBRARY_PATH
 popd
 
 # Build static libcurl with musl (with static openssl compiled by musl)
 pushd $CURL_DIR
 LD_LIBRARY_PATH="$MUSL_LIBRARY_PATH:$LD_LIBRARY_PATH" CC=$MUSL_FULLPATH/bin/x86_64-linux-musl-gcc CPPFLAGS="-I$OPENSSL_FULLPATH/include" LDFLAGS="-static -L$MUSL_LIBRARY_PATH" ./configure --with-openssl -disable-shared --enable-static --disable-ldap
-make -j
+make
 cp lib/.libs/*.a $MUSL_LIBRARY_PATH
 make clean
 popd
