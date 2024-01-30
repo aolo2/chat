@@ -73,7 +73,7 @@ if [ ! -e "$toolchain"/.done ] || [ "$rebuild_toolchain" = "1" ]; then
 
 	cd "$build"/curl
 	LD_LIBRARY_PATH="$toolchain"/native-libs CPPFLAGS="-I$build/openssl/include" LDFLAGS="-L$toolchain/native-libs -Wl,-rpath,\\\$\$ORIGIN" ./configure --with-openssl --disable-ldap
-	make
+	LD_LIBRARY_PATH="$toolchain"/native-libs make
 	cp lib/.libs/*.so* "$toolchain"/native-libs/
 	make clean
 	CC="$muslcc" CPPFLAGS="-I$build/openssl/include" LDFLAGS="-static -L$toolchain"/musl-libs ./configure --with-openssl --disable-ldap -disable-shared --enable-static
