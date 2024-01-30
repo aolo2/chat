@@ -414,6 +414,8 @@ main(int argc, char **argv)
     
     // TODO: properly wait for all children to terminate
     
+    killpg(0, SIGTERM);
+
     log_info("Shutting down... Bye!\n");
     
     queue_finalize(&server.queue);
