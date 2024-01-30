@@ -304,18 +304,18 @@ ensure_environment(int argc, char **argv, char *real_path)
         log_error("Usage: %s port data_directory [--dev]\n", argv[0]);
         return(false);
     }
+
+    if (!directory_exists(argv[2])) {
+        log_fwarning(__func__, "Data directory %s not found, creating\n", argv[2]);
+        if (mkdir(argv[2], 0755) == -1) {
+            log_fperror(__func__, "mkdir");
+            return(false);
+        }
+    }
     
     if (!realpath(argv[2], real_path)) {
         log_fperror(__func__, "realpath");
         return(false);
-    }
-    
-    if (!directory_exists(real_path)) {
-        log_warning("Data directory %s does not exist, will try to create it now\n", argv[2]);
-        if (mkdir(real_path, 0700) != 0) {
-            log_perror("mkdir");
-            return(false);
-        }
     }
     
     if (chdir(real_path) == -1) {
