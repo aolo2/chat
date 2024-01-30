@@ -316,14 +316,6 @@ ensure_environment(int argc, char **argv, char *real_path)
         return(false);
     }
     
-    if (!directory_exists(argv[2])) {
-        log_warning("Data directory %s does not exist, will try to create it now\n", argv[2]);
-        if (mkdir(argv[2], 0700) != 0) {
-            log_perror("mkdir");
-            return(false);
-        }
-    }
-    
     if (chdir(argv[2]) == -1) {
         log_perror("chdir");
         return(false);
